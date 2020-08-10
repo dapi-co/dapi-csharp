@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 namespace connect_csharp.Products
 {
     public class payment

@@ -1,12 +1,9 @@
 ﻿
 
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using connect_csharp;
 using Newtonsoft.Json.Linq;
-using RestSharp;
 
 namespace TestCsharplibrary
 {

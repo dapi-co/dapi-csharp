@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net.Http;
 using connect_csharp.Products;
-
 using RestSharp;
 
 namespace connect_csharp
