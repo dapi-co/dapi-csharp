@@ -10,7 +10,7 @@ namespace connect_csharp.Products
         }
         public static string GetPathIdentity()
         {
-            return "v1/data/Identity/get";
+            return "/data/Identity/get";
         }
         public static object GetPostDataIdentity(string appSecret, string userSecret)
         {
@@ -24,7 +24,7 @@ namespace connect_csharp.Products
         }
         public static string GetPathAccounts()
         {
-            return "v1/data/accounts/get";
+            return "/data/accounts/get";
         }
         public static object GetPostDataAccounts(string appSecret, string userSecret)
         {
@@ -38,7 +38,7 @@ namespace connect_csharp.Products
         }
         public static string GetPathBalance()
         {
-            return "v1/data/balance/get";
+            return "/data/balance/get";
         }
 
         public static object GetPostDataBalance(string appSecret, string userSecret,string accountID)
@@ -55,7 +55,7 @@ namespace connect_csharp.Products
 
         public static string GetPathTransations()
         {
-            return "v1/data/transactions/get";
+            return "/data/transactions/get";
         }
         public static object GetPostDataTransactions(string appSecret, string userSecret, string accountID, string toDate, string fromDate)
         {
@@ -75,7 +75,7 @@ namespace connect_csharp.Products
 
         public static string GetPathMetaData()
         {
-            return "v1/metadata/accounts/get";
+            return "/metadata/accounts/get";
         }
         public static object GetPostDataMetaData(string appSecret, string userSecret)
         {

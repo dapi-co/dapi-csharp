@@ -8,7 +8,7 @@ namespace connect_csharp.Products
         }
         public static string getPathCreateTransfer()
         {
-            return "v1/payment/transfer/create";
+            return "/payment/transfer/create";
         }
         public static object getPostDataCreateTransfer(string appSecret, string userSecret, string receiverID, string senderID, string amount)
         {
@@ -27,7 +27,7 @@ namespace connect_csharp.Products
 
         public static string getPathCreateBeneficiary()
         {
-            return "v1/payment/beneficiaries/create";
+            return "/payment/beneficiaries/create";
         }
         public static object getPostDataCreateBeneficiary(string appSecret, string userSecret, string name, string accountNumber, string type, string address, string bankName, string swiftCode)
         {
@@ -50,7 +50,7 @@ namespace connect_csharp.Products
 
         public static string getPathGetBeneficiary()
         {
-            return "v1/payment/beneficiaries/get";
+            return "/payment/beneficiaries/get";
         }
         public static object getPostDataGetBeneficiary(string appSecret, string userSecret)
         {

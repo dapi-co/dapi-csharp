@@ -8,19 +8,18 @@ namespace connect_csharp
 {
     public class DapiClient
     {
-        public const int Months = 12;
-        private HttpClient client;
+
         private string appSecret;
 
         private String LIBRARY_USER_AGENT = "Dapi Connect CSharp";
         private String API_HOST = "http://localhost:443";
         private String API_VERSION = "/v1";
         private String contentType = "application/json";
-
+        private RestClient client;
         public DapiClient(String appSecret)
         {
             this.appSecret = appSecret;
-
+            client = new RestClient(API_HOST + API_VERSION);
 
         }
 
@@ -32,7 +31,7 @@ namespace connect_csharp
         public string Request(string path, object dataObj)
         {
 
-            var client = new RestClient("http://127.0.0.1:443");
+
             //client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", accessToken));
 
             var request = new RestRequest(path, Method.POST);
@@ -48,9 +47,9 @@ namespace connect_csharp
         public string authenticatedRequest(string path, object dataObj, string accessToken)
         {
 
-            var client = new RestClient("http://127.0.0.1:443");
+            client = new RestClient(API_HOST + API_VERSION);
             client.AddDefaultHeader("Authorization", string.Format("Bearer {0}", accessToken));
-
+            client.UserAgent = LIBRARY_USER_AGENT;
             var request = new RestRequest(path, Method.POST);
 
             request.AddJsonBody(dataObj);
@@ -101,9 +100,9 @@ namespace connect_csharp
             return authenticatedRequest(Data.GetPathTransations(), Data.GetPostDataTransactions(this.appSecret, userSecret, accountID, toDate, fromDate), accessToken);
         }
 
-        public string getMetaData(string accessToken,string userSecret)
+        public string getMetaData(string accessToken, string userSecret)
         {
-            return authenticatedRequest(Data.GetPathMetaData(), Data.GetPostDataMetaData(this.appSecret,userSecret), accessToken);
+            return authenticatedRequest(Data.GetPathMetaData(), Data.GetPostDataMetaData(this.appSecret, userSecret), accessToken);
         }
         //*****************************PAYMENT*****************************
 

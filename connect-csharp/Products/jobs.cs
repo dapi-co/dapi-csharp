@@ -8,7 +8,7 @@ namespace connect_csharp.Products
         }
         public static string getPathJobStatus()
         {
-            return "v1/job/status";
+            return "/job/status";
         }
         public static object getPostDataJobStatus(string appSecret,string userSecret,string jobID)
         {

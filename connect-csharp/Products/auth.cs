@@ -8,7 +8,7 @@ namespace connect_csharp.Products
         }
         public static string GetPathExchangeToken()
         {
-            return "v1/auth/ExchangeToken";
+            return "/auth/ExchangeToken";
         }
         public static object getPostDataExchangeToken(string appSecret, string accessCode, string connectionID)
         {
@@ -23,7 +23,7 @@ namespace connect_csharp.Products
 
         public static string GetPathRefreshAccessToken()
         {
-            return "v1/auth/RefreshAccessToken";
+            return "/auth/RefreshAccessToken";
         }
         public static object getPostDataRefreshAccessToken( string appSecret,string accessToken)
         {
@@ -35,7 +35,7 @@ namespace connect_csharp.Products
         }
         public static string getPathCheckLogin()
         {
-            return "v1/auth/login/check";
+            return "/auth/login/check";
         }
         public static object getPostDataCheckLogin(string appSecret, string userSecret)
         {
@@ -48,7 +48,7 @@ namespace connect_csharp.Products
         }
         public static string getPathDeLinkUser()
         {
-            return "v1/Users/DelinkUser";
+            return "/Users/DelinkUser";
         }
         public static object getPostDataDeLinkUser(string appSecret)
         {
