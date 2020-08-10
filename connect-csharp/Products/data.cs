@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestCsharplibrary.Products
+namespace connect_csharp.Products
 {
     public class Data
     {
@@ -77,7 +77,7 @@ namespace TestCsharplibrary.Products
         {
             return "v1/metadata/accounts/get";
         }
-        public static object GetPostDataMetaData(string appSecret, string userSecret, string accountID, string toDate, string fromDate)
+        public static object GetPostDataMetaData(string appSecret, string userSecret)
         {
             return new
             {

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using RestSharp;
-using TestCsharplibrary.Products;
+using connect_csharp.Products;
 
-namespace TestCsharplibrary
+using RestSharp;
+
+namespace connect_csharp
 {
     public class DapiClient
     {
@@ -28,18 +25,7 @@ namespace TestCsharplibrary
         }
 
 
-        public async Task<JObject> RequestAsync(string path, List<KeyValuePair<string, string>> data)
-        {
-            var content = new FormUrlEncodedContent(data);
-            Console.WriteLine(content);
-            var response = this.client.PostAsync(path, content).Result;
-            var contents = await response.Content.ReadAsStringAsync();
 
-            return JObject.Parse(contents);
-
-
-
-        }
 
         //*****************************NormalRequest*****************************
 
@@ -76,9 +62,9 @@ namespace TestCsharplibrary
         }
         //*****************************AUTH*****************************
 
-        public string exchangeToken(string appSecret, string accessToken, string connectionId)
+        public string exchangeToken(string appSecret, string accessCode, string connectionId)
         {
-            return Request(Auth.GetPathExchangeToken(), Auth.getPostDataExchangeToken(appSecret, accessToken, connectionId));
+            return Request(Auth.GetPathExchangeToken(), Auth.getPostDataExchangeToken(appSecret, accessCode, connectionId));
         }
 
         public string checkLogin(string appSecret, string userSecret)
@@ -88,6 +74,11 @@ namespace TestCsharplibrary
         public string delinkUser(string appSecret, string accessToken)
         {
             return authenticatedRequest(Auth.getPathDeLinkUser(), Auth.getPostDataDeLinkUser(appSecret), accessToken);
+        }
+
+        public string refreshAccessToken(string appSecret, string accessToken)
+        {
+            return Request(Auth.GetPathRefreshAccessToken(), Auth.getPostDataRefreshAccessToken(appSecret, accessToken));
         }
         //*****************************DATA*****************************
         public string getIdentity(string accessToken, string userSecret)
@@ -110,6 +101,10 @@ namespace TestCsharplibrary
             return authenticatedRequest(Data.GetPathTransations(), Data.GetPostDataTransactions(this.appSecret, userSecret, accountID, toDate, fromDate), accessToken);
         }
 
+        public string getMetaData(string accessToken,string userSecret)
+        {
+            return authenticatedRequest(Data.GetPathMetaData(), Data.GetPostDataMetaData(this.appSecret,userSecret), accessToken);
+        }
         //*****************************PAYMENT*****************************
 
         public string createTransfer(string accessToken, string userSecret, string receiverID, string senderID, string amount)
@@ -123,6 +118,11 @@ namespace TestCsharplibrary
         public string getBeneficiary(string accessToken, string userSecret)
         {
             return authenticatedRequest(payment.getPathGetBeneficiary(), payment.getPostDataGetBeneficiary(appSecret, userSecret), accessToken);
+        }
+        //*****************************JOBS*****************************
+        public string getJobStatus(string accessToken, string userSecret, string jobID)
+        {
+            return authenticatedRequest(jobs.getPathJobStatus(), jobs.getPostDataJobStatus(appSecret, userSecret, jobID), accessToken);
         }
     }
 }

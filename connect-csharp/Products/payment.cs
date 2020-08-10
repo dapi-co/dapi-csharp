@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TestCsharplibrary.Products
+namespace connect_csharp.Products
 {
     public class payment
     {

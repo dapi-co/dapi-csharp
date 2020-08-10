@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace TestCsharplibrary.Products
+﻿
+namespace connect_csharp.Products
 {
     public class Auth
     {
@@ -12,13 +10,13 @@ namespace TestCsharplibrary.Products
         {
             return "v1/auth/ExchangeToken";
         }
-        public static object getPostDataExchangeToken(string appSecret, string accessToken, string connectionId)
+        public static object getPostDataExchangeToken(string appSecret, string accessCode, string connectionID)
         {
             return new
             {
                 appSecret = appSecret,
-                accessToken = accessToken,
-                connectionId = connectionId
+                accessCode = accessCode,
+                connectionID = connectionID
             };
         }
 
@@ -27,7 +25,7 @@ namespace TestCsharplibrary.Products
         {
             return "v1/auth/RefreshAccessToken";
         }
-        public static object getPostDataRefreshAccessToken(string accessToken, string appSecret)
+        public static object getPostDataRefreshAccessToken( string appSecret,string accessToken)
         {
             return new
             {
