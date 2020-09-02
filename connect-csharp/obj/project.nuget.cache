@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5HbY2vfPbTRDWcULvgCiXbx1YfukfaMhsBBWtKHPF4pDjm2+LfTu533gUYPRRXsXUYg2G2pcghx6PhN15xFokg==",
+  "dgSpecHash": "HZG6tn0e81xAXoosK+A21fUIP8tTHGhIfDupxq/oZgrvh2mSyzdbQWY1O+CnVVo7ojNBD0PPDdyWNij0baKQdw==",
   "success": true,
-  "projectFilePath": "/Users/nomanahmed/Projects/connect-csharp/connect-csharp/connect-csharp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/connect-csharp.csproj",
+  "expectedPackageFiles": [
+    "/Users/nomanahmed/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/Users/nomanahmed/.nuget/packages/restsharp/106.11.4/restsharp.106.11.4.nupkg.sha512"
+  ],
   "logs": []
 }

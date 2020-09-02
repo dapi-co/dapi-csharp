@@ -7,3 +7,9 @@
 /Users/nomanahmed/Projects/connect-csharp/connect-csharp/bin/Debug/netcoreapp3.1/connect-csharp.pdb
 /Users/nomanahmed/Projects/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.dll
 /Users/nomanahmed/Projects/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.pdb
+/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.csprojAssemblyReference.cache
+/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.AssemblyInfoInputs.cache
+/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.AssemblyInfo.cs
+/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.csproj.CoreCompileInputs.cache
+/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.dll
+/Users/nomanahmed/Development/backendlibaray/connect-csharp/connect-csharp/obj/Debug/netcoreapp3.1/connect-csharp.pdb

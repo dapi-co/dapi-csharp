@@ -38,30 +38,30 @@ namespace TestCsharplibrary
 
             //********************DATA***************************************
             Console.WriteLine("********************IDENTITY***************************************");
-            Console.WriteLine(d.getIdentity(accessToken, userSecret));
+            Console.WriteLine(d.data.getIdentity(accessToken, userSecret));
             Console.WriteLine("********************ACCOUNTS***************************************");
-            Console.WriteLine(d.getAccounts(accessToken, userSecret));
+            Console.WriteLine(d.data.getAccounts(accessToken, userSecret));
             Console.WriteLine("********************BALANCE***************************************");
-            Console.WriteLine(d.getBalance(accessToken, userSecret, "1XEwNY4QbNC63OvrICO2yDOlaXCzAwhnb/divVFZmCAe456PcqqQANxqfW+v1AYf4ncIHkmeD1RHouVOVyCEsw=="));
+            Console.WriteLine(d.data.getBalance(accessToken, userSecret, "1XEwNY4QbNC63OvrICO2yDOlaXCzAwhnb/divVFZmCAe456PcqqQANxqfW+v1AYf4ncIHkmeD1RHouVOVyCEsw=="));
             Console.WriteLine("********************TRANSACTIONS***************************************");
-            Console.WriteLine(d.getTransactions(accessToken, userSecret, "1XEwNY4QbNC63OvrICO2yDOlaXCzAwhnb/divVFZmCAe456PcqqQANxqfW+v1AYf4ncIHkmeD1RHouVOVyCEsw==", "2020-06-01", "2020-05-01"));
+            Console.WriteLine(d.data.getTransactions(accessToken, userSecret, "1XEwNY4QbNC63OvrICO2yDOlaXCzAwhnb/divVFZmCAe456PcqqQANxqfW+v1AYf4ncIHkmeD1RHouVOVyCEsw==", "2020-06-01", "2020-05-01"));
             Console.WriteLine("********************GETMETADATA***************************************");
-            Console.WriteLine(d.getMetaData(accessToken, userSecret));
+           // Console.WriteLine(d.data.accountsMetaData(accessToken, userSecret));
 
             //********************PAYMENTS***************************************
             Console.WriteLine("********************GETBENEFICIARIES***************************************");
             //Console.WriteLine(d.getBeneficiary(accessToken, userSecret));
-            string data = d.getBeneficiary(accessToken, userSecret);
+             d.payment.getBeneficiary(accessToken, userSecret);
             Console.WriteLine("********************CREATETRANSFER***************************************");
             //Console.WriteLine(d.createTransfer(accessToken, userSecret, "mJ0WOFcjOfWsDXZta/L1meyy9+YyyJ+s59+VWeEo1LxcAzBankFlhQzr9A4AWR2MwOYN/WS6kqQ91+cQHa/3fQ==", "1XEwNY4QbNC63OvrICO2yDOlaXCzAwhnb/divVFZmCAe456PcqqQANxqfW+v1AYf4ncIHkmeD1RHouVOVyCEsw==", "1"));
             Console.WriteLine("***************NEW************");
 
-            JObject json = JObject.Parse(data);
-            Console.WriteLine("JOBID" + json.GetValue("jobID"));
-            string jobID = json.GetValue("jobID").ToString();
-            //********************JOBS***************************************
+            //JObject json = JObject.Parse(data);
+            //Console.WriteLine("JOBID" + json.GetValue("jobID"));
+            //string jobID = json.GetValue("jobID").ToString();
+            ////********************JOBS***************************************
 
-            Console.WriteLine(d.getJobStatus(accessToken, userSecret, jobID));
+            //Console.WriteLine(d.getJobStatus(accessToken, userSecret, jobID));
 
 
 
