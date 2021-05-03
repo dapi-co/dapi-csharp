@@ -2,6 +2,7 @@
 using Dapi.Types;
 using Newtonsoft.Json;
 using RestSharp;
+using RestSharp.Serializers.NewtonsoftJson;
 
 namespace Dapi.Products {
     public class DapiRequest {
@@ -9,9 +10,12 @@ namespace Dapi.Products {
         public static readonly string Dapi_URL = "http://localhost:8090";
         public static readonly string DD_URL = "https://dd.dapi.co";
 
+        private static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
+            NullValueHandling = NullValueHandling.Ignore
+        };
+
         private static readonly IRestClient httpClient = new RestClient()
-            //.UseSerializer(() => new JsonSerializer {DateFormat = "yyyy-mm-dd"})
-            ;
+            .UseNewtonsoftJson(jsonSettings);
 
         internal static ResT Do<ReqT, ResT>(ReqT reqBody, string url) {
             return Do<ReqT, ResT>(reqBody, url, new List<KeyValuePair<string, string>>());
@@ -23,7 +27,7 @@ namespace Dapi.Products {
             var resp = doReq(reqBody, url, headers);
 
             // convert the got response body to the required type
-            var data = JsonConvert.DeserializeObject<ResT>(resp.Content);
+            var data = JsonConvert.DeserializeObject<ResT>(resp.Content, jsonSettings);
 
             // return the data if it's valid, otherwise return an error response
             return data;
