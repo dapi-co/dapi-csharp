@@ -10,7 +10,7 @@ namespace Dapi.Products {
         public static readonly string Dapi_URL = "http://localhost:8090";
         public static readonly string DD_URL = "https://dd.dapi.co";
 
-        private static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
+        internal static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
             NullValueHandling = NullValueHandling.Ignore
         };
 
