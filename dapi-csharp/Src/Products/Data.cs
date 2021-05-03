@@ -89,6 +89,7 @@ namespace Dapi.Products {
 
         private class GetBalanceRequest : DapiRequest.BaseRequest {
             internal string action => "/data/balance/get";
+
             public string accountID { get; }
 
             public GetBalanceRequest(string accountID, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
@@ -99,6 +100,7 @@ namespace Dapi.Products {
 
         private class GetTransactionsRequest : DapiRequest.BaseRequest {
             internal string action => "/data/transactions/get";
+
             public string accountID { get; }
             public string fromDate { get; }
             public string toDate { get; }
