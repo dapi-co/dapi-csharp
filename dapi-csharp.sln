@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dapi-csharp", "dapi-csharp\dapi-csharp.csproj", "{E471B038-246C-4956-BBAC-65E82F92B3AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dapi", "src\Dapi\Dapi.csproj", "{E471B038-246C-4956-BBAC-65E82F92B3AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

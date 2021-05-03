@@ -9,7 +9,7 @@ namespace Dapi.Products {
         public Payment(string appSecret) {
             this.appSecret = appSecret;
         }
-
+        
         public GetBeneficiariesResponse getBeneficiaries(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetBeneficiariesRequest(appSecret, userSecret, operationID, userInputs);

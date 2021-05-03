@@ -17,7 +17,7 @@ namespace Dapi {
         private readonly Data d;
         private readonly Payment p;
         private readonly Metadata m;
-
+        
         public DapiApp(string appSecret) {
             this.appSecret = appSecret;
             this.a = new Auth(appSecret);

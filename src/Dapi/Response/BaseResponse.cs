@@ -7,7 +7,7 @@ namespace Dapi.Response {
         /// the status of the operation.
         /// </summary>
         public APIStatus status { get; }
-
+        
         /// <summary>
         /// true if request is successful and false otherwise.
         /// </summary>

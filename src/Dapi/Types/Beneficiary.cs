@@ -9,7 +9,7 @@ namespace Dapi.Types {
         public BeneficiaryStatus status { get; }
         public string iban { get; }
         public string accountNumber { get; }
-
+        
         public Beneficiary(string name, string id, BeneficiaryType type, BeneficiaryStatus status, string iban, string accountNumber) {
             this.name = name;
             this.id = id;

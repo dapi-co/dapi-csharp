@@ -7,7 +7,7 @@ namespace Dapi.Products {
         public Auth(string appSecret) {
             this.appSecret = appSecret;
         }
-
+        
         public ExchangeTokenResponse exchangeToken(string accessCode, string connectionID) {
             // Create the request body of this call
             var reqBody = new ExchangeTokenRequest(appSecret, accessCode, connectionID);

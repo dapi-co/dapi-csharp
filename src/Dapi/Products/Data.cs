@@ -10,7 +10,7 @@ namespace Dapi.Products {
         public Data(string appSecret) {
             this.appSecret = appSecret;
         }
-
+        
         public GetIdentityResponse getIdentity(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetIdentityRequest(appSecret, userSecret, operationID, userInputs);
