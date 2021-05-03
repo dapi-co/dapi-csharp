@@ -17,6 +17,10 @@ namespace Dapi.Products {
         private static readonly IRestClient httpClient = new RestClient()
             .UseNewtonsoftJson(jsonSettings);
 
+        internal static IRestResponse HandleSDK(object reqBody, ICollection<KeyValuePair<string, string>> headers) {
+            return doReq(reqBody, DD_URL, headers);
+        }
+
         internal static ResT Do<ReqT, ResT>(ReqT reqBody, string url) {
             return Do<ReqT, ResT>(reqBody, url, new List<KeyValuePair<string, string>>());
         }
