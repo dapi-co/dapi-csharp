@@ -11,7 +11,7 @@ namespace Dapi.Types {
         public bool isFavourite { get; }
         public Currency currency { get; }
 
-        public Account(string name, string iban, string number, AccountType type, string id, bool isFavourite, Currency currency, Balance balance) {
+        public Account(string name, string iban, string number, AccountType type, string id, bool isFavourite, Currency currency) {
             this.name = name;
             this.iban = iban;
             this.number = number;

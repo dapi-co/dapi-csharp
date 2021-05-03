@@ -3,8 +3,8 @@ using Newtonsoft.Json.Converters;
 
 namespace Dapi.Types {
     public class Identification {
-        private string value;
-        private IdentificationType type;
+        public string value { get; }
+        public IdentificationType type { get; }
 
         public Identification(string value, IdentificationType type) {
             this.value = value;
