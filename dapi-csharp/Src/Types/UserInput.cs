@@ -59,6 +59,18 @@ namespace Dapi.Types {
             this.answer = answer;
         }
 
+        /// <summary>
+        /// This is used only to automate the deserialization of the got response.
+        /// This is a private constructor to this lib.
+        /// </summary>
+        [JsonConstructor]
+        private UserInput(string answer, string query, UserInputID id, int index) {
+            this.id = id;
+            this.index = index;
+            this.query = query;
+            this.answer = answer;
+        }
+
         [JsonConverter(typeof(StringEnumConverter))]
         public enum UserInputID {
             otp,
