@@ -11,7 +11,7 @@ namespace Dapi.Products {
             this.appSecret = appSecret;
         }
 
-        internal GetIdentityResponse getIdentity(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public GetIdentityResponse getIdentity(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetIdentityRequest(appSecret, userSecret, operationID, userInputs);
 
@@ -26,7 +26,7 @@ namespace Dapi.Products {
             return respBody ?? new GetIdentityResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
-        internal GetAccountsResponse getAccounts(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public GetAccountsResponse getAccounts(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetAccountsRequest(appSecret, userSecret, operationID, userInputs);
 
@@ -41,7 +41,7 @@ namespace Dapi.Products {
             return respBody ?? new GetAccountsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
-        internal GetBalanceResponse getBalance(string accountID, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public GetBalanceResponse getBalance(string accountID, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetBalanceRequest(accountID, appSecret, userSecret, operationID, userInputs);
 
@@ -56,7 +56,7 @@ namespace Dapi.Products {
             return respBody ?? new GetBalanceResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
-        internal GetTransactionsResponse getTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public GetTransactionsResponse getTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetTransactionsRequest(accountID, fromDate, toDate, appSecret, userSecret, operationID, userInputs);
 

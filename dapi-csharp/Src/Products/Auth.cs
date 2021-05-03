@@ -8,7 +8,7 @@ namespace Dapi.Products {
             this.appSecret = appSecret;
         }
 
-        internal ExchangeTokenResponse exchangeToken(string accessCode, string connectionID) {
+        public ExchangeTokenResponse exchangeToken(string accessCode, string connectionID) {
             // Create the request body of this call
             var reqBody = new ExchangeTokenRequest(appSecret, accessCode, connectionID);
 
