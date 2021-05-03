@@ -6,8 +6,7 @@ using RestSharp.Serializers.NewtonsoftJson;
 
 namespace Dapi.Products {
     public class DapiRequest {
-        // public static readonly string Dapi_URL = "https://api.dapi.co";
-        public static readonly string Dapi_URL = "http://localhost:8090";
+        public static readonly string Dapi_URL = "https://api.dapi.co";
         public static readonly string DD_URL = "https://dd.dapi.co";
 
         internal static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
