@@ -1,0 +1,5 @@
+﻿.idea
+.vs
+.vscode
+src/Dapi/obj
+src/Dapi/bin
