@@ -17,7 +17,14 @@ namespace Dapi.Products {
             .UseNewtonsoftJson(jsonSettings);
 
         internal static IRestResponse HandleSDK(object reqBody, ICollection<KeyValuePair<string, string>> headers) {
-            return doReq(reqBody, DD_URL, headers);
+            // create the request with the passed body and headers
+            var req = new RestRequest(DD_URL)
+                .AddJsonBody(reqBody)
+                .AddHeaders(headers)
+                .AddHeader("Host", "dd.dapi.co");
+
+            // execute the request and return the raw response type
+            return httpClient.Execute(req, Method.POST);
         }
 
         internal static ResT Do<ReqT, ResT>(ReqT reqBody, string url) {
