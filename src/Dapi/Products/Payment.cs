@@ -9,7 +9,7 @@ namespace Dapi.Products {
         public Payment(string appSecret) {
             this.appSecret = appSecret;
         }
-        
+
         public GetBeneficiariesResponse getBeneficiaries(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new GetBeneficiariesRequest(appSecret, userSecret, operationID, userInputs);
@@ -136,6 +136,8 @@ namespace Dapi.Products {
             public string name { get; }
             public string iban { get; }
             public string accountNumber { get; }
+            public string remark { get; }
+            public string nickname { get; }
 
             /// <summary>
             /// Create an object that holds the info for a transfer from a bank that requires the receiver to be already
@@ -160,6 +162,38 @@ namespace Dapi.Products {
                 this.name = null;
                 this.iban = null;
                 this.accountNumber = null;
+                this.remark = null;
+                this.nickname = null;
+            }
+
+            /// <summary>
+            /// Create an object that holds the info for a transfer from a bank that requires the receiver to be already
+            /// registered as a beneficiary to perform a transaction.
+            /// </summary>
+            ///
+            /// <param name="senderID">
+            /// the id of the account which the money should be sent from.
+            /// retrieved from one of the accounts array returned from the getAccounts method.
+            /// </param>
+            /// <param name="amount">
+            /// the amount of money which should be sent.
+            /// </param>
+            /// <param name="receiverID">
+            /// the id of the beneficiary which the money should be sent to.
+            /// retrieved from one of the beneficiaries array returned from the getBeneficiaries method.
+            /// </param>
+            /// <param name="remark">
+            /// the remark string that will be sent with this transfer.
+            /// </param>
+            public Transfer(string senderID, float amount, string receiverID, string remark) {
+                this.senderID = senderID;
+                this.amount = amount;
+                this.receiverID = receiverID;
+                this.remark = remark;
+                this.name = null;
+                this.iban = null;
+                this.accountNumber = null;
+                this.nickname = null;
             }
 
             /// <summary>
@@ -187,10 +221,51 @@ namespace Dapi.Products {
             public Transfer(string senderID, float amount, string name, string iban, string accountNumber) {
                 this.senderID = senderID;
                 this.amount = amount;
-                this.receiverID = null;
                 this.name = name;
                 this.iban = iban;
                 this.accountNumber = accountNumber;
+                this.receiverID = null;
+                this.remark = null;
+                this.nickname = null;
+            }
+
+            /// <summary>
+            /// Create an object that holds the info for a transfer from a bank that handles the creation of beneficiaries
+            /// on its own, internally, and doesn't require the receiver to be already registered as a beneficiary to perform
+            /// a transaction.
+            /// </summary>
+            ///
+            /// <param name="senderID">
+            /// the id of the account which the money should be sent from.
+            /// retrieved from one of the accounts array returned from the getAccounts method.
+            /// </param>
+            /// <param name="amount">
+            /// the amount of money which should be sent.
+            /// </param>
+            /// <param name="name">
+            /// the name of receiver.
+            /// </param>
+            /// <param name="iban">
+            /// the IBAN of the receiver's account.
+            /// </param>
+            /// <param name="accountNumber">
+            /// the Account Number of the receiver's account.
+            /// </param>
+            /// <param name="remark">
+            /// the remark string that will be sent with this transfer.
+            /// </param>
+            /// <param name="nickname">
+            /// the nickname of the receiver.
+            /// </param>
+            public Transfer(string senderID, float amount, string name, string iban, string accountNumber, string remark, string nickname) {
+                this.senderID = senderID;
+                this.amount = amount;
+                this.name = name;
+                this.iban = iban;
+                this.accountNumber = accountNumber;
+                this.remark = remark;
+                this.nickname = nickname;
+                this.receiverID = null;
             }
         }
 
@@ -202,6 +277,7 @@ namespace Dapi.Products {
             public string senderID { get; }
             public float amount { get; }
             public BeneficiaryInfo beneficiary { get; }
+            public string remark { get; }
 
             /// <summary>
             /// Create an object that holds the info needed for the transferAutoflow method.
@@ -237,6 +313,47 @@ namespace Dapi.Products {
                 this.senderID = senderID;
                 this.amount = amount;
                 this.beneficiary = beneficiary;
+                this.remark = null;
+            }
+
+            /// <summary>
+            /// Create an object that holds the info needed for the transferAutoflow method.
+            /// </summary>
+            ///
+            /// <param name="bundleID">
+            /// one of the bundleIDs set for this app.
+            /// </param>
+            /// <param name="appKey">
+            /// the appKey of this app.
+            /// </param>
+            /// <param name="userID">
+            /// the userID of the user which is initiating this transfer.
+            /// </param>
+            /// <param name="bankID">
+            /// the bankID of the user which is initiating this transfer.
+            /// </param>
+            /// <param name="senderID">
+            /// the id of the account which the money should be sent from.
+            /// retrieved from one of the accounts array returned from the getAccounts method.
+            /// </param>
+            /// <param name="amount">
+            /// the amount of money which should be sent.
+            /// </param>
+            /// <param name="beneficiary">
+            /// the required info about the beneficiary.
+            /// </param>
+            /// <param name="remark">
+            /// the remark string that will be sent with this transfer.
+            /// </param>
+            public TransferAutoflow(string bundleID, string appKey, string userID, string bankID, string senderID, float amount, BeneficiaryInfo beneficiary, string remark) {
+                this.bundleID = bundleID;
+                this.appKey = appKey;
+                this.userID = userID;
+                this.bankID = bankID;
+                this.senderID = senderID;
+                this.amount = amount;
+                this.beneficiary = beneficiary;
+                this.remark = remark;
             }
         }
 
@@ -294,6 +411,8 @@ namespace Dapi.Products {
             public string name { get; }
             public string iban { get; }
             public string accountNumber { get; }
+            public string remark { get; }
+            public string nickname { get; }
 
             public CreateTransferRequest(Transfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
                 base(appSecret, userSecret, operationID, userInputs) {
@@ -303,6 +422,8 @@ namespace Dapi.Products {
                 this.name = transfer.name;
                 this.iban = transfer.iban;
                 this.accountNumber = transfer.accountNumber;
+                this.remark = transfer.remark;
+                this.nickname = transfer.nickname;
             }
         }
 
@@ -316,6 +437,7 @@ namespace Dapi.Products {
             public string senderID { get; }
             public float amount { get; }
             public BeneficiaryInfo beneficiary { get; }
+            public string remark { get; }
 
             public TransferAutoflowRequest(TransferAutoflow transferAutoflow, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
                 base(appSecret, userSecret, operationID, userInputs) {
@@ -326,6 +448,7 @@ namespace Dapi.Products {
                 this.senderID = transferAutoflow.senderID;
                 this.amount = transferAutoflow.amount;
                 this.beneficiary = transferAutoflow.beneficiary;
+                this.remark = transferAutoflow.remark;
             }
         }
     }
