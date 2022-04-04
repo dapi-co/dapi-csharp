@@ -6,8 +6,8 @@ using RestSharp.Serializers.NewtonsoftJson;
 
 namespace Dapi.Products {
     public class DapiRequest {
-        public static readonly string Dapi_URL = "https://api.dapi.co";
-        public static readonly string DD_URL = "https://dd.dapi.co";
+        public static readonly string Dapi_URL = "https://api.dapi.com";
+        public static readonly string DD_URL = "https://dd.dapi.com";
 
         internal static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
             NullValueHandling = NullValueHandling.Ignore
@@ -21,7 +21,7 @@ namespace Dapi.Products {
             var req = new RestRequest(DD_URL)
                 .AddJsonBody(reqBody)
                 .AddHeaders(headers)
-                .AddHeader("Host", "dd.dapi.co");
+                .AddHeader("Host", "dd.dapi.com");
 
             // execute the request and return the raw response type
             return httpClient.Execute(req, Method.POST);
