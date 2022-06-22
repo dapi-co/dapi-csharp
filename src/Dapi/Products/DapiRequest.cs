@@ -13,7 +13,7 @@ namespace Dapi.Products {
             NullValueHandling = NullValueHandling.Ignore
         };
 
-        private static readonly IRestClient httpClient = new RestClient()
+        private static readonly IRestClient httpClient = new RestClient(new RestClientOptions { Timeout = 300000 })
             .UseNewtonsoftJson(jsonSettings);
 
         internal static IRestResponse HandleSDK(object reqBody, ICollection<KeyValuePair<string, string>> headers) {
