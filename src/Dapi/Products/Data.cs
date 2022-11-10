@@ -71,6 +71,36 @@ namespace Dapi.Products {
             return respBody ?? new GetTransactionsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
+        public GetCategorizedTransactionsResponse getCategorizedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            // Create the request body of this call
+            var reqBody = new GetTransactionsRequest(accountID, fromDate, toDate, appSecret, userSecret, operationID, userInputs);
+
+            // Construct the headers needed for this request
+            var headers = new List<KeyValuePair<string, string>>();
+            headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
+
+            // Make the request and get the response
+            var respBody = DapiRequest.Do<GetTransactionsRequest, GetCategorizedTransactionsResponse>(reqBody, reqBody.action, headers);
+
+            // return the data if it's valid, otherwise return an error response
+            return respBody ?? new GetCategorizedTransactionsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
+        }
+
+        public GetEnrichedTransactionsResponse getEnrichedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            // Create the request body of this call
+            var reqBody = new GetTransactionsRequest(accountID, fromDate, toDate, appSecret, userSecret, operationID, userInputs);
+
+            // Construct the headers needed for this request
+            var headers = new List<KeyValuePair<string, string>>();
+            headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
+
+            // Make the request and get the response
+            var respBody = DapiRequest.Do<GetTransactionsRequest, GetEnrichedTransactionsResponse>(reqBody, reqBody.action, headers);
+
+            // return the data if it's valid, otherwise return an error response
+            return respBody ?? new GetEnrichedTransactionsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
+        }
+
         private class GetIdentityRequest : DapiRequest.BaseRequest {
             internal string action => "/data/identity/get";
 
