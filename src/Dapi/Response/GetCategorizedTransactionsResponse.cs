@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Dapi.Response {
     public class GetCategorizedTransactionsResponse : BaseResponse {
-        public Transaction[] transactions { get; }
+        public CategorizedTransaction[] transactions { get; }
 
         /// <summary>
         /// This is used only to automate the deserialization of the got response.
