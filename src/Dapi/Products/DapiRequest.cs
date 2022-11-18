@@ -23,6 +23,7 @@ namespace Dapi.Products {
                 .AddHeaders(headers)
                 .AddHeader("Host", "dd.dapi.com");
 
+            httpClient.Timeout = 300000;
             // execute the request and return the raw response type
             return httpClient.Execute(req, Method.POST);
         }
@@ -49,6 +50,7 @@ namespace Dapi.Products {
                 .AddJsonBody(reqBody)
                 .AddHeaders(headers);
 
+            httpClient.Timeout = 300000;
             // execute the request and return the raw response type
             return httpClient.Execute(req, Method.POST);
         }
