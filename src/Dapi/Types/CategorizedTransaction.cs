@@ -26,11 +26,5 @@ namespace Dapi.Types {
             this.reference = reference;
             this.category = category;
         }
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TransactionType {
-            credit,
-            debit
-        }
     }
 }

@@ -28,11 +28,5 @@ namespace Dapi.Types {
             this.category = category;
             this.brandDetails = brandDetails;
         }
-
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TransactionType {
-            credit,
-            debit
-        }
     }
 }

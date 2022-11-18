@@ -255,7 +255,7 @@ namespace Dapi {
         /// built from the previous call's response, and the required user input.
         /// </param>
             public GetCategorizedTransactionsResponse getCategorizedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
-            return this.d.getCategorizedTransactions(accountID, fromDate, toDate, accessToken, userSecret, "", null);
+            return this.d.getCategorizedTransactions(accountID, fromDate, toDate, accessToken, userSecret, operationID, userInputs);
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace Dapi {
         /// built from the previous call's response, and the required user input.
         /// </param>
         public GetEnrichedTransactionsResponse getEnrichedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
-            return this.d.getEnrichedTransactions(accountID, fromDate, toDate, accessToken, userSecret, "", null);
+            return this.d.getEnrichedTransactions(accountID, fromDate, toDate, accessToken, userSecret, operationID, userInputs);
         }
 
         /// <summary>
