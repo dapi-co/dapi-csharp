@@ -71,6 +71,36 @@ namespace Dapi.Products {
             return respBody ?? new GetTransactionsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
+        public GetCategorizedTransactionsResponse getCategorizedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            // Create the request body of this call
+            var reqBody = new GetCategorizedTransactionsRequest(accountID, fromDate, toDate, appSecret, userSecret, operationID, userInputs);
+
+            // Construct the headers needed for this request
+            var headers = new List<KeyValuePair<string, string>>();
+            headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
+
+            // Make the request and get the response
+            var respBody = DapiRequest.Do<GetCategorizedTransactionsRequest, GetCategorizedTransactionsResponse>(reqBody, reqBody.action, headers);
+
+            // return the data if it's valid, otherwise return an error response
+            return respBody ?? new GetCategorizedTransactionsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
+        }
+
+        public GetEnrichedTransactionsResponse getEnrichedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            // Create the request body of this call
+            var reqBody = new GetEnrichedTransactionsRequest(accountID, fromDate, toDate, appSecret, userSecret, operationID, userInputs);
+
+            // Construct the headers needed for this request
+            var headers = new List<KeyValuePair<string, string>>();
+            headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
+
+            // Make the request and get the response
+            var respBody = DapiRequest.Do<GetEnrichedTransactionsRequest, GetEnrichedTransactionsResponse>(reqBody, reqBody.action, headers);
+
+            // return the data if it's valid, otherwise return an error response
+            return respBody ?? new GetEnrichedTransactionsResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
+        }
+
         private class GetIdentityRequest : DapiRequest.BaseRequest {
             internal string action => "/data/identity/get";
 
@@ -108,6 +138,40 @@ namespace Dapi.Products {
             private readonly string dateFormat = "yyyy-MM-dd";
 
             public GetTransactionsRequest(string accountID, DateTime fromDate, DateTime toDate, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
+                base(appSecret, userSecret, operationID, userInputs) {
+                this.accountID = accountID;
+                this.fromDate = fromDate.ToString(dateFormat);
+                this.toDate = toDate.ToString(dateFormat);
+            }
+        }
+
+        private class GetCategorizedTransactionsRequest : DapiRequest.BaseRequest {
+            internal string action => "/data/categorizedTransactions/get";
+
+            public string accountID { get; }
+            public string fromDate { get; }
+            public string toDate { get; }
+
+            private readonly string dateFormat = "yyyy-MM-dd";
+
+            public GetCategorizedTransactionsRequest(string accountID, DateTime fromDate, DateTime toDate, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
+                base(appSecret, userSecret, operationID, userInputs) {
+                this.accountID = accountID;
+                this.fromDate = fromDate.ToString(dateFormat);
+                this.toDate = toDate.ToString(dateFormat);
+            }
+        }
+
+         private class GetEnrichedTransactionsRequest : DapiRequest.BaseRequest {
+            internal string action => "/data/enrichedTransactions/get";
+
+            public string accountID { get; }
+            public string fromDate { get; }
+            public string toDate { get; }
+
+            private readonly string dateFormat = "yyyy-MM-dd";
+
+            public GetEnrichedTransactionsRequest(string accountID, DateTime fromDate, DateTime toDate, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
                 base(appSecret, userSecret, operationID, userInputs) {
                 this.accountID = accountID;
                 this.fromDate = fromDate.ToString(dateFormat);

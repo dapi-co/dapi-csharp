@@ -205,6 +205,114 @@ namespace Dapi {
         }
 
         /// <summary>
+        /// getCategorizedTransactions talks to the GetCategorizedTransactions endpoint of Dapi, with this DapiApp's appSecret,
+        /// to continue a previous operation that required to provide some userInputs.
+        /// </summary>
+        ///
+        /// <param name="accountID">
+        /// the id of the account which this operation is about.
+        /// </param>
+        /// <param name="fromDate">
+        /// the start date of the transactions we want.
+        /// </param>
+        /// <param name="toDate">
+        /// the end date of the transactions we want.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        public GetCategorizedTransactionsResponse getCategorizedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret) {
+            return this.d.getCategorizedTransactions(accountID, fromDate, toDate, accessToken, userSecret, "", null);
+        }
+
+        /// <summary>
+        /// getCategorizedTransactions talks to the GetCategorizedTransactions endpoint of Dapi, with this DapiApp's appSecret,
+        /// to continue a previous operation that required to provide some userInputs.
+        /// </summary>
+        ///
+        /// <param name="accountID">
+        /// the id of the account which this operation is about.
+        /// </param>
+        /// <param name="fromDate">
+        /// the start date of the transactions we want.
+        /// </param>
+        /// <param name="toDate">
+        /// the end date of the transactions we want.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        /// <param name="operationID">
+        /// retrieved from the previous call's response.
+        /// </param>
+        /// <param name="userInputs">
+        /// built from the previous call's response, and the required user input.
+        /// </param>
+            public GetCategorizedTransactionsResponse getCategorizedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            return this.d.getCategorizedTransactions(accountID, fromDate, toDate, accessToken, userSecret, operationID, userInputs);
+        }
+
+        /// <summary>
+        /// getEnrichedTransactions talks to the GetEnrichedTransactions endpoint of Dapi, with this DapiApp's appSecret,
+        /// to continue a previous operation that required to provide some userInputs.
+        /// </summary>
+        ///
+        /// <param name="accountID">
+        /// the id of the account which this operation is about.
+        /// </param>
+        /// <param name="fromDate">
+        /// the start date of the transactions we want.
+        /// </param>
+        /// <param name="toDate">
+        /// the end date of the transactions we want.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        public GetEnrichedTransactionsResponse getEnrichedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret) {
+            return this.d.getEnrichedTransactions(accountID, fromDate, toDate, accessToken, userSecret, "", null);
+        }
+
+        /// <summary>
+        /// getEnrichedTransactions talks to the GetEnrichedTransactions endpoint of Dapi, with this DapiApp's appSecret,
+        /// to continue a previous operation that required to provide some userInputs.
+        /// </summary>
+        ///
+        /// <param name="accountID">
+        /// the id of the account which this operation is about.
+        /// </param>
+        /// <param name="fromDate">
+        /// the start date of the transactions we want.
+        /// </param>
+        /// <param name="toDate">
+        /// the end date of the transactions we want.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        /// <param name="operationID">
+        /// retrieved from the previous call's response.
+        /// </param>
+        /// <param name="userInputs">
+        /// built from the previous call's response, and the required user input.
+        /// </param>
+        public GetEnrichedTransactionsResponse getEnrichedTransactions(string accountID, DateTime fromDate, DateTime toDate, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            return this.d.getEnrichedTransactions(accountID, fromDate, toDate, accessToken, userSecret, operationID, userInputs);
+        }
+
+        /// <summary>
         /// createBeneficiary talks to the CreateBeneficiary endpoint of Dapi, with this DapiApp's appSecret.
         /// </summary>
         ///
