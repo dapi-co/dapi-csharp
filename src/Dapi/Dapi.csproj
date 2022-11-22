@@ -4,15 +4,15 @@
         <RootNamespace>Dapi</RootNamespace>
         <Authors>dapi-co</Authors>
         <Company>dapi-co</Company>
-        <AssemblyVersion>1.2.0</AssemblyVersion>
-        <FileVersion>1.2.0</FileVersion>
+        <AssemblyVersion>1.3.0</AssemblyVersion>
+        <FileVersion>1.3.0</FileVersion>
         <TargetFrameworks>net461;net472;netstandard2.0</TargetFrameworks>
         <LangVersion>8</LangVersion>
         <PackageId>Dapi</PackageId>
         <PackageTags>Dapi</PackageTags>
         <Description>A client library that talks to the Dapi APIs</Description>
         <RepositoryUrl>https://github.com/dapi-co/dapi-csharp</RepositoryUrl>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>1.3.0</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
