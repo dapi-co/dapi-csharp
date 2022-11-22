@@ -1,11 +1,8 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace Dapi.Types {
     public class EnrichedTransaction {
         public float amount { get; }
         public string date { get; }
-        public Dapi.Types.TransactionType type { get; }
+        public TransactionType type { get; }
         public string description { get; }
         public string details { get; }
         public Currency currency { get; }
