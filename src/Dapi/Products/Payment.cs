@@ -70,6 +70,21 @@ namespace Dapi.Products {
             return respBody ?? new TransferAutoflowResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
+        public CreateTransferResponse createACHTransfer(Transfer transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            // Create the request body of this call
+            var reqBody = new CreateTransferRequest(transfer, appSecret, userSecret, operationID, userInputs);
+
+            // Construct the headers needed for this request
+            var headers = new List<KeyValuePair<string, string>>();
+            headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
+
+            // Make the request and get the response
+            var respBody = DapiRequest.Do<CreateTransferRequest, CreateTransferResponse>(reqBody, reqBody.action, headers);
+
+            // return the data if it's valid, otherwise return an error response
+            return respBody ?? new CreateTransferResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
+        }
+
         public class BeneficiaryInfo {
             public string name { get; }
             public string accountNumber { get; }
@@ -449,6 +464,31 @@ namespace Dapi.Products {
                 this.amount = transferAutoflow.amount;
                 this.beneficiary = transferAutoflow.beneficiary;
                 this.remark = transferAutoflow.remark;
+            }
+        }
+
+        private class CreateTransferRequest : DapiRequest.BaseRequest {
+            internal string action => "/ach/pull/create";
+
+            public string senderID { get; }
+            public float amount { get; }
+            public string receiverID { get; }
+            public string name { get; }
+            public string iban { get; }
+            public string accountNumber { get; }
+            public string remark { get; }
+            public string nickname { get; }
+
+            public CreateTransferRequest(Transfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
+                base(appSecret, userSecret, operationID, userInputs) {
+                this.senderID = transfer.senderID;
+                this.amount = transfer.amount;
+                this.receiverID = transfer.receiverID;
+                this.name = transfer.name;
+                this.iban = transfer.iban;
+                this.accountNumber = transfer.accountNumber;
+                this.remark = transfer.remark;
+                this.nickname = transfer.nickname;
             }
         }
     }
