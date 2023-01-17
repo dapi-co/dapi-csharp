@@ -406,6 +406,23 @@ namespace Dapi {
         }
 
         /// <summary>
+        /// createTransfer talks to the CreateTransfer endpoint of Dapi, with this DapiApp's appSecret.
+        /// </summary>
+        ///
+        /// <param name="ACHTransfer">
+        /// the details of the transfer that should be initiate.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        public CreateACHTransferResponse createACHTransfer(Payment.ACHTransfer transfer, string accessToken, string userSecret) {
+            return this.p.createACHTransfer(transfer, accessToken, userSecret, "", null);
+        }
+
+        /// <summary>
         /// createTransfer talks to the CreateTransfer endpoint of Dapi, with this DapiApp's appSecret,
         /// to continue a previous operation that required to provide some userInputs.
         /// </summary>
