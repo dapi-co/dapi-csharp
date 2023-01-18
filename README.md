@@ -480,3 +480,32 @@ In addition to the fields described in the BaseResponse, it has the following fi
 
 ---
 
+
+#### DapiApp.createACHTransfer
+
+Method is used to initiate a new ACH transfer.
+
+##### Method Description
+
+```c#
+public CreateACHTransferResponse createACHTransfer(Payment.ACHTransfer transfer, string accessToken, string userSecret)
+
+```
+
+##### Input Parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| **transfer** <br> _REQUIRED_ | `Payment.Transfer` | An object that contains info about the transfer that should be initiated. |
+| **accessToken** <br> _REQUIRED_ | `string` | Access Token obtained using the `exchangeToken` method. |
+| **userSecret** <br> _REQUIRED_ | `string` | The `userSecret` from a user’s successful log in to **Connect**. |
+
+##### Response
+
+In addition to the fields described in the BaseResponse, it has the following fields, which will only be returned if the status is `done`:
+
+| Parameter | Type | Description |
+|---|---|---|
+| reference | `string` | Transaction reference string returned by the bank. |
+
+---
