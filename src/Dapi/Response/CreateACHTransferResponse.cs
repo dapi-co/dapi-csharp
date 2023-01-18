@@ -10,7 +10,7 @@ namespace Dapi.Response {
         /// </summary>
         [JsonConstructor]
         internal CreateACHTransferResponse(string reference, APIStatus status, bool success, string operationID) :
-            base(status, success, operationID) {
+            base(status, success, operationID, null, "", "") {
         }
 
         /// <summary>
