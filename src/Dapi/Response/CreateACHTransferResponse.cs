@@ -5,7 +5,7 @@ namespace Dapi.Response {
     public class CreateACHTransferResponse : BaseResponse {
 
         /// <summary>
-        /// This is used only to automate the deserialization of the got response.
+        /// This is used only to automate the deserialization of the get response.
         /// This is a private constructor to this lib.
         /// </summary>
         [JsonConstructor]

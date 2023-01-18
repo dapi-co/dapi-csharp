@@ -72,7 +72,7 @@ namespace Dapi.Products {
 
         public CreateACHTransferResponse createACHTransfer(ACHTransfer transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
-            var reqBody = new CreateTransferRequest(transfer, appSecret, userSecret, operationID, userInputs);
+            var reqBody = new CreateACHTransferRequest(transfer, appSecret, userSecret, operationID, userInputs);
 
             // Construct the headers needed for this request
             var headers = new List<KeyValuePair<string, string>>();
@@ -502,7 +502,7 @@ namespace Dapi.Products {
             public float amount { get; }
             public string description { get; }
 
-            public CreateACHTransferRequest(Transfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
+            public CreateACHTransferRequest(ACHTransfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
                 base(appSecret, userSecret, operationID, userInputs) {
                 this.senderID = transfer.senderID;
                 this.amount = transfer.amount;

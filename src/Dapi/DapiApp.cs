@@ -406,10 +406,10 @@ namespace Dapi {
         }
 
         /// <summary>
-        /// createTransfer talks to the CreateTransfer endpoint of Dapi, with this DapiApp's appSecret.
+        /// createACHTransfer talks to the CreateACHTransfer endpoint of Dapi, with this DapiApp's appSecret.
         /// </summary>
         ///
-        /// <param name="ACHTransfer">
+        /// <param name="transfer">
         /// the details of the transfer that should be initiate.
         /// </param>
         /// <param name="accessToken">
