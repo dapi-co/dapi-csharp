@@ -17,12 +17,14 @@ namespace Dapi {
         private readonly Data d;
         private readonly Payment p;
         private readonly Metadata m;
+        private readonly ACH c;
         
         public DapiApp(string appSecret) {
             this.appSecret = appSecret;
             this.a = new Auth(appSecret);
             this.d = new Data(appSecret);
             this.p = new Payment(appSecret);
+            this.c = new ACH(appSecret);
             this.m = new Metadata(appSecret);
         }
 
@@ -406,7 +408,7 @@ namespace Dapi {
         }
 
         /// <summary>
-        /// createACHTransfer talks to the CreateACHTransfer endpoint of Dapi, with this DapiApp's appSecret.
+        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
         /// </summary>
         ///
         /// <param name="transfer">
@@ -418,8 +420,18 @@ namespace Dapi {
         /// <param name="userSecret">
         /// retrieved from the user login.
         /// </param>
-        public CreateACHTransferResponse createACHTransfer(Payment.ACHTransfer transfer, string accessToken, string userSecret) {
-            return this.p.createACHTransfer(transfer, accessToken, userSecret, "", null);
+        public CreateACHPullResponse createACHPull(ACH.ACHPull transfer, string accessToken, string userSecret) {
+            return this.c.createACHPull(transfer, accessToken, userSecret, "", null);
+        }
+
+        /// <summary>
+        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
+        /// </summary>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        public GetACHPullResponse getACHPull(string accessToken, string userSecret) {
+            return this.c.getACHPull(accessToken, userSecret, "", null);
         }
 
         /// <summary>
