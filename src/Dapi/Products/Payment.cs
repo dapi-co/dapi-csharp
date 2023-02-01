@@ -70,21 +70,6 @@ namespace Dapi.Products {
             return respBody ?? new TransferAutoflowResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
-        public CreateACHTransferResponse createACHTransfer(ACHTransfer transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
-            // Create the request body of this call
-            var reqBody = new CreateACHTransferRequest(transfer, appSecret, userSecret, operationID, userInputs);
-
-            // Construct the headers needed for this request
-            var headers = new List<KeyValuePair<string, string>>();
-            headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
-
-            // Make the request and get the response
-            var respBody = DapiRequest.Do<CreateACHTransferRequest, CreateACHTransferResponse>(reqBody, reqBody.action, headers);
-
-            // return the data if it's valid, otherwise return an error response
-            return respBody ?? new CreateACHTransferResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
-        }
-
         public class BeneficiaryInfo {
             public string name { get; }
             public string accountNumber { get; }
@@ -372,34 +357,6 @@ namespace Dapi.Products {
             }
         }
 
-        public class ACHTransfer {
-            public string senderID { get; }
-            public float amount { get; }
-            public string description { get; }
-
-            /// <summary>
-            /// Create an object that holds the info for a transfer from a bank that requires the receiver to be already
-            /// registered as a beneficiary to perform a transaction.
-            /// </summary>
-            ///
-            /// <param name="senderID">
-            /// the id of the account which the money should be sent from.
-            /// retrieved from one of the accounts array returned from the getAccounts method.
-            /// </param>
-            /// <param name="amount">
-            /// the amount of money which should be sent.
-            /// </param>
-            /// <param name="description">
-            /// the id of the beneficiary which the money should be sent to.
-            /// retrieved from one of the beneficiaries array returned from the getBeneficiaries method.
-            /// </param>
-            public ACHTransfer(string senderID, float amount, string description) {
-                this.senderID = senderID;
-                this.amount = amount;
-                this.description = description;
-            }
-        }
-
         private class GetBeneficiariesRequest : DapiRequest.BaseRequest {
             internal string action => "/payment/beneficiaries/get";
 
@@ -492,21 +449,6 @@ namespace Dapi.Products {
                 this.amount = transferAutoflow.amount;
                 this.beneficiary = transferAutoflow.beneficiary;
                 this.remark = transferAutoflow.remark;
-            }
-        }
-
-        private class CreateACHTransferRequest : DapiRequest.BaseRequest {
-            internal string action => "/ach/pull/create";
-
-            public string senderID { get; }
-            public float amount { get; }
-            public string description { get; }
-
-            public CreateACHTransferRequest(ACHTransfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
-                base(appSecret, userSecret, operationID, userInputs) {
-                this.senderID = transfer.senderID;
-                this.amount = transfer.amount;
-                this.description = transfer.description;
             }
         }
     }
