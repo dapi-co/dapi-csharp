@@ -538,3 +538,32 @@ In addition to the fields described in the BaseResponse, it has the following fi
 | transfer | `ACHGetTransfer` | ACH transfer details returned by the bank. |
 
 ---
+
+
+#### DapiApp.getACHPull
+
+Method is used to initiate a new ACH pull.
+
+##### Method Description
+
+```c#
+CGetACHPullResponse getACHPull(string accessToken, string userSecret, string operationID, UserInput[] userInputs)
+
+```
+
+##### Input Parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| **accessToken** <br> _REQUIRED_ | `string` | Access Token obtained using the `exchangeToken` method. |
+| **userSecret** <br> _REQUIRED_ | `string` | The `userSecret` from a user’s successful log in to **Connect**. |
+
+##### Response
+
+In addition to the fields described in the BaseResponse, it has the following fields, which will only be returned if the status is `done`:
+
+| Parameter | Type | Description |
+|---|---|---|
+| reference | `string` | Transaction reference string returned by the bank. |
+
+---
