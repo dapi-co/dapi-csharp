@@ -27,19 +27,19 @@ namespace Dapi.Products {
             return respBody ?? new CreateACHPullResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
-        public getACHPullResponse getACHPull(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public GetACHPullResponse getACHPull(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
-            var reqBody = new getACHPullRequest(appSecret, userSecret, operationID, userInputs);
+            var reqBody = new GetACHPullRequest(appSecret, userSecret, operationID, userInputs);
 
             // Construct the headers needed for this request
             var headers = new List<KeyValuePair<string, string>>();
             headers.Add(new KeyValuePair<string, string>("Authorization", "Bearer " + accessToken));
 
             // Make the request and get the response
-            var respBody = DapiRequest.Do<getACHPullRequest, getACHPullResponse>(reqBody, reqBody.action, headers);
+            var respBody = DapiRequest.Do<GetACHPullRequest, GetACHPullResponse>(reqBody, reqBody.action, headers);
 
             // return the data if it's valid, otherwise return an error response
-            return respBody ?? new getACHPullResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
+            return respBody ?? new GetACHPullResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
         public class ACHPull {

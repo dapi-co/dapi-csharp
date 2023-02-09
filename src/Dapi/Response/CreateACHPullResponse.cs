@@ -9,7 +9,7 @@ namespace Dapi.Response {
         /// This is a private constructor to this lib.
         /// </summary>
         [JsonConstructor]
-        internal CreateACHPullResponse(string reference, APIStatus status, bool success, string operationID) :
+        internal CreateACHPullResponse(APIStatus status, bool success, string operationID) :
             base(status, success, operationID, null, "", "") {
         }
 

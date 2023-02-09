@@ -4,13 +4,16 @@ using Newtonsoft.Json;
 namespace Dapi.Response {
     public class GetACHPullResponse : BaseResponse {
 
+        public ACHGetTransfer transfer { get; }
+
         /// <summary>
         /// This is used only to automate the deserialization of the get response.
         /// This is a private constructor to this lib.
         /// </summary>
         [JsonConstructor]
-        internal GetACHPullResponse(string reference, APIStatus status, bool success, string operationID) :
+        internal GetACHPullResponse(ACHGetTransfer transfer, string reference, APIStatus status, bool success, string operationID) :
             base(status, success, operationID, null, "", "") {
+                this.transfer = transfer
         }
 
         /// <summary>
