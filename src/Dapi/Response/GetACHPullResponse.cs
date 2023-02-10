@@ -10,8 +10,8 @@ namespace Dapi.Response {
         /// This is a private constructor to this lib.
         /// </summary>
         [JsonConstructor]
-        internal GetACHPullResponse(ACHGetTransfer transfer, string reference, APIStatus status, bool success, string operationID) :
-            base(status, success, operationID, null, "", "") {
+        internal GetACHPullResponse(ACHGetTransfer transfer, string reference, APIStatus status, bool success, string operationID, UserInput[] userInputs, string type, string msg) :
+            base(status, success, operationID, userInputs, type, msg) {
             this.transfer = transfer;
         }
 
