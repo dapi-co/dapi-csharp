@@ -525,7 +525,7 @@ namespace Dapi {
         /// <param name="userInputs">
         /// built from the previous call's response, and the required user input.
         /// </param>
-        public CreateACHPullResponse createACHPull(ACH.ACHPull transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public CreateACHPullResponse createACHPull(ACH.PullTransfer transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             return this.c.createACHPull(transfer, accessToken, userSecret, operationID, userInputs);
         }
 
@@ -561,7 +561,7 @@ namespace Dapi {
         /// <param name="userSecret">
         /// retrieved from the user login.
         /// </param>
-        public CreateACHPullResponse createACHPull(ACH.ACHPull transfer, string accessToken, string userSecret) {
+        public CreateACHPullResponse createACHPull(ACH.PullTransfer transfer, string accessToken, string userSecret) {
             return this.c.createACHPull(transfer, accessToken, userSecret, "", null);
         }
 

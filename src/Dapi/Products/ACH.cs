@@ -10,7 +10,7 @@ namespace Dapi.Products {
             this.appSecret = appSecret;
         }
 
-        public CreateACHPullResponse createACHPull(ACHPull transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+        public CreateACHPullResponse createACHPull(PullTransfer transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call
             var reqBody = new CreateACHPullRequest(transfer, appSecret, userSecret, operationID, userInputs);
 
@@ -40,7 +40,7 @@ namespace Dapi.Products {
             return respBody ?? new GetACHPullResponse("UNEXPECTED_RESPONSE", "Unexpected response body");
         }
 
-        public class ACHPull {
+        public class PullTransfer {
             public string senderID { get; }
             public float amount { get; }
             public string description { get; }
@@ -49,7 +49,6 @@ namespace Dapi.Products {
             /// Create an object that holds the info for a transfer from a bank that requires the receiver to be already
             /// registered as a beneficiary to perform a transaction.
             /// </summary>
-            ///
             /// <param name="senderID">
             /// the id of the account which the money should be sent from.
             /// retrieved from one of the accounts array returned from the getAccounts method.
@@ -61,7 +60,7 @@ namespace Dapi.Products {
             /// the id of the beneficiary which the money should be sent to.
             /// retrieved from one of the beneficiaries array returned from the getBeneficiaries method.
             /// </param>
-            public ACHPull(string senderID, float amount, string description) {
+            public PullTransfer(string senderID, float amount, string description) {
                 this.senderID = senderID;
                 this.amount = amount;
                 this.description = description;
@@ -71,15 +70,11 @@ namespace Dapi.Products {
         private class CreateACHPullRequest : DapiRequest.BaseRequest {
             internal string action => "/ach/pull/create";
 
-            public string senderID { get; }
-            public float amount { get; }
-            public string description { get; }
+            public PullTransfer transfer { get; }
 
-            public CreateACHPullRequest(ACHPull transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
+            public CreateACHPullRequest(PullTransfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
                 base(appSecret, userSecret, operationID, userInputs) {
-                this.senderID = transfer.senderID;
-                this.amount = transfer.amount;
-                this.description = transfer.description;
+                this.transfer = transfer
             }
         }
 
