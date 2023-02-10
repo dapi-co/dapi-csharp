@@ -480,3 +480,61 @@ In addition to the fields described in the BaseResponse, it has the following fi
 
 ---
 
+
+#### DapiApp.createACHPull
+
+Method is used to initiate a new ACH pull create.
+
+##### Method Description
+
+```c#
+public CreateACHPullResponse createACHPull(ACHPull transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs)
+
+```
+
+##### Input Parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| **transfer** <br> _REQUIRED_ | `ACH.ACHPull` | An object that contains info about the transfer that should be initiated. |
+| **accessToken** <br> _REQUIRED_ | `string` | Access Token obtained using the `exchangeToken` method. |
+| **userSecret** <br> _REQUIRED_ | `string` | The `userSecret` from a user’s successful log in to **Connect**. |
+| **operationID** <br> _OPTIONAL_ | `string` | The `operationID` from a previous call's response. <br> Required only when resuming a previous call that responded with `user_input_required` status, to provided user inputs. |
+| **userInputs** <br> _OPTIONAL_ | `UserInput[]` | Array of `UserInput` object, that are needed to complete this operation. <br> Required only if a previous call responded with `user_input_required` status. <br><br> You can read more about user inputs specification on [Specify User Input](https://dapi-api.readme.io/docs/specify-user-input) |
+
+##### Response
+
+Method returns only the fields defined in the BaseResponse.
+
+---
+
+
+#### DapiApp.getACHPull
+
+Method is used to initiate a new get ACH pull.
+
+##### Method Description
+
+```c#
+public GetACHPullResponse getACHPull(string accessToken, string userSecret, string operationID, UserInput[] userInputs)
+
+```
+
+##### Input Parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| **accessToken** <br> _REQUIRED_ | `string` | Access Token obtained using the `exchangeToken` method. |
+| **userSecret** <br> _REQUIRED_ | `string` | The `userSecret` from a user’s successful log in to **Connect**. |
+| **operationID** <br> _OPTIONAL_ | `string` | The `operationID` from a previous call's response. <br> Required only when resuming a previous call that responded with `user_input_required` status, to provided user inputs. |
+| **userInputs** <br> _OPTIONAL_ | `UserInput[]` | Array of `UserInput` object, that are needed to complete this operation. <br> Required only if a previous call responded with `user_input_required` status. <br><br> You can read more about user inputs specification on [Specify User Input](https://dapi-api.readme.io/docs/specify-user-input) |
+
+##### Response
+
+In addition to the fields described in the BaseResponse, it has the following fields, which will only be returned if the status is `done`:
+
+| Parameter | Type | Description |
+|---|---|---|
+| transfer | `ACHPullTransferInfo` | ACH transfer details returned by the bank. |
+
+---
