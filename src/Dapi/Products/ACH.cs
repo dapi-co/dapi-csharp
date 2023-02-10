@@ -74,7 +74,7 @@ namespace Dapi.Products {
 
             public CreateACHPullRequest(PullTransfer transfer, string appSecret, string userSecret, string operationID, UserInput[] userInputs) :
                 base(appSecret, userSecret, operationID, userInputs) {
-                this.transfer = transfer
+                this.transfer = transfer;
             }
         }
 
