@@ -535,6 +535,6 @@ In addition to the fields described in the BaseResponse, it has the following fi
 
 | Parameter | Type | Description |
 |---|---|---|
-| transfer | `ACHGetTransfer` | ACH transfer details returned by the bank. |
+| transfer | `ACHPullTransferInfo` | ACH transfer details returned by the bank. |
 
 ---
