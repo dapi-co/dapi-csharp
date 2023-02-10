@@ -408,33 +408,6 @@ namespace Dapi {
         }
 
         /// <summary>
-        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
-        /// </summary>
-        ///
-        /// <param name="transfer">
-        /// the details of the transfer that should be initiate.
-        /// </param>
-        /// <param name="accessToken">
-        /// retrieved from the ExchangeToken process.
-        /// </param>
-        /// <param name="userSecret">
-        /// retrieved from the user login.
-        /// </param>
-        public CreateACHPullResponse createACHPull(ACH.ACHPull transfer, string accessToken, string userSecret) {
-            return this.c.createACHPull(transfer, accessToken, userSecret, "", null);
-        }
-
-        /// <summary>
-        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
-        /// </summary>
-        /// <param name="userSecret">
-        /// retrieved from the user login.
-        /// </param>
-        public GetACHPullResponse getACHPull(string accessToken, string userSecret) {
-            return this.c.getACHPull(accessToken, userSecret, "", null);
-        }
-
-        /// <summary>
         /// createTransfer talks to the CreateTransfer endpoint of Dapi, with this DapiApp's appSecret,
         /// to continue a previous operation that required to provide some userInputs.
         /// </summary>
@@ -531,6 +504,81 @@ namespace Dapi {
         /// </param>
         public GetAccountsMetadataResponse getAccountsMetadata(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             return this.m.getAccountsMetadata(accessToken, userSecret, operationID, userInputs);
+        }
+
+        /// <summary>
+        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
+        /// </summary>
+        ///
+        /// <param name="transfer">
+        /// the details of the transfer that should be initiate.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        /// <param name="operationID">
+        /// retrieved from the previous call's response.
+        /// </param>
+        /// <param name="userInputs">
+        /// built from the previous call's response, and the required user input.
+        /// </param>
+        public CreateACHPullResponse createACHPull(ACH.ACHPull transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            return this.c.createACHPull(transfer, accessToken, userSecret, operationID, userInputs);
+        }
+
+        /// <summary>
+        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
+        /// </summary>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        /// <param name="operationID">
+        /// retrieved from the previous call's response.
+        /// </param>
+        /// <param name="userInputs">
+        /// built from the previous call's response, and the required user input.
+        /// </param>
+        public GetACHPullResponse getACHPull(string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
+            return this.c.getACHPull(accessToken, userSecret, operationID, userInputs);
+        }
+
+        /// <summary>
+        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
+        /// </summary>
+        ///
+        /// <param name="transfer">
+        /// the details of the transfer that should be initiate.
+        /// </param>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+        public CreateACHPullResponse createACHPull(ACH.ACHPull transfer, string accessToken, string userSecret) {
+            return this.c.createACHPull(transfer, accessToken, userSecret, "", null);
+        }
+
+        /// <summary>
+        /// createACHPull talks to the CreateACHPull endpoint of Dapi, with this DapiApp's appSecret.
+        /// </summary>
+        /// <param name="accessToken">
+        /// retrieved from the ExchangeToken process.
+        /// </param>
+        /// <param name="userSecret">
+        /// retrieved from the user login.
+        /// </param>
+         /// <param name="operationID">
+        /// retrieved from the previous call's response.
+        /// </param>
+        public GetACHPullResponse getACHPull(string accessToken, string userSecret, string operationID) {
+            return this.c.getACHPull(accessToken, userSecret, operationID, null);
         }
 
         /// <summary>
