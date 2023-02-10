@@ -3,14 +3,12 @@ using Dapi.Response;
 using Dapi.Types;
 
 namespace Dapi.Products {
-
     public class ACH {
         private string appSecret { get; }
 
         public ACH(string appSecret) {
             this.appSecret = appSecret;
         }
-
 
         public CreateACHPullResponse createACHPull(ACHPull transfer, string accessToken, string userSecret, string operationID, UserInput[] userInputs) {
             // Create the request body of this call

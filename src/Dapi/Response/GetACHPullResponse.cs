@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace Dapi.Response {
     public class GetACHPullResponse : BaseResponse {
-
         public ACHGetTransfer transfer { get; }
 
         /// <summary>
@@ -13,7 +12,7 @@ namespace Dapi.Response {
         [JsonConstructor]
         internal GetACHPullResponse(ACHGetTransfer transfer, string reference, APIStatus status, bool success, string operationID) :
             base(status, success, operationID, null, "", "") {
-                this.transfer = transfer;
+            this.transfer = transfer;
         }
 
         /// <summary>
