@@ -8,8 +8,8 @@ namespace Dapi.Products {
     public class DapiRequest {
         public static readonly string Dapi_URL = "https://api.dapi.com";
         public static readonly string DD_URL = "https://dd.dapi.com";
-        public static readonly string Library = "dapi-csharp";
-        public static readonly string LibraryVersion = "1.3.0";
+        private static readonly string Library = "dapi-csharp";
+        private static readonly string LibraryVersion = "1.3.0";
 
         internal static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
             NullValueHandling = NullValueHandling.Ignore
