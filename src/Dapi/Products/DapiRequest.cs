@@ -8,6 +8,8 @@ namespace Dapi.Products {
     public class DapiRequest {
         public static readonly string Dapi_URL = "https://api.dapi.com";
         public static readonly string DD_URL = "https://dd.dapi.com";
+        private static readonly string Library = "dapi-csharp";
+        private static readonly string LibraryVersion = "1.3.0";
 
         internal static readonly JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
             NullValueHandling = NullValueHandling.Ignore
@@ -21,7 +23,9 @@ namespace Dapi.Products {
             var req = new RestRequest(DD_URL)
                 .AddJsonBody(reqBody)
                 .AddHeaders(headers)
-                .AddHeader("Host", "dd.dapi.com");
+                .AddHeader("Host", "dd.dapi.com")
+                .AddHeader("X-Dapi-Library", Library)
+                .AddHeader("X-Dapi-Library-Version", LibraryVersion);
 
             httpClient.Timeout = 300000;
             // execute the request and return the raw response type
@@ -48,7 +52,9 @@ namespace Dapi.Products {
             // create the request with the passed body and headers
             var req = new RestRequest(url)
                 .AddJsonBody(reqBody)
-                .AddHeaders(headers);
+                .AddHeaders(headers)
+                .AddHeader("X-Dapi-Library", Library)
+                .AddHeader("X-Dapi-Library-Version", LibraryVersion);
 
             httpClient.Timeout = 300000;
             // execute the request and return the raw response type
